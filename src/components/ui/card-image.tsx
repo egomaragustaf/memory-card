@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Card } from "./card";
 import { duplicateCard } from "@/lib/duplicate-card";
 
@@ -55,6 +55,19 @@ export default function CardImage({ images }: Readonly<MemoryGameProps>) {
       return newCards;
     });
   };
+
+  const isGameFinished = useMemo(() => {
+    for (const card of cards) {
+      if (!card.isMatched) {
+        return false;
+      }
+    }
+    return true;
+  }, [cards]);
+
+  if (isGameFinished) {
+    alert("Congratulations! You've won the game!");
+  }
 
   return (
     <div className="grid grid-cols-4 gap-4">
