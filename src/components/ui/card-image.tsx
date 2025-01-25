@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Card } from "./card";
-import { shuffleArray } from "@/lib/shuffle-array";
 import { duplicateCard } from "@/lib/duplicate-card";
 
 type CardImageProps = {
